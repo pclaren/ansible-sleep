@@ -1,0 +1,11 @@
+---
+
+- name: 'Sleep'
+  hosts: 'all'
+  become: false
+  gather_facts: false
+
+  tasks:
+    - name: 'Sleep for some time'
+      ansible.builtin.pause:
+        minutes: '{{ sleep_time | default(5) }}'
