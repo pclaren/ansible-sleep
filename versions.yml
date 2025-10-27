@@ -1,0 +1,24 @@
+---
+
+- name: 'Versions'
+  hosts: 'all'
+  become: false
+  gather_facts: false
+
+  tasks:
+    - name: 'Get collections'
+      ansible.builtin.command: 'ansible-galaxy collection list'
+      register: '__collections'
+
+    - name: 'List collections'
+      ansible.builtin.debug:
+        msg: '{{ __collections.stdout_lines }}'
+
+    - name: 'Get python modules'
+      community.general.pip_package_info:
+      register: '__pip_package_info'
+
+    - name: 'List python modules'
+      ansible.builtin.debug:
+        msg: '{{ __pip_package_info.packages.pip.keys() }}'
+
