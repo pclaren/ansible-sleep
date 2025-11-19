@@ -1,0 +1,15 @@
+---
+
+- name: 'Sleep'
+  hosts: 'all'
+  become: false
+  gather_facts: true
+
+  tasks:
+    - name: 'Run uptime'
+      ansible.builtin.command: 'uptime'
+      register: '__uptime'
+
+    - name: 'Print command output'
+      ansible.builtin.debug:
+        msg: '{{ __uptime.stdout }}'
