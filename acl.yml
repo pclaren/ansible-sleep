@@ -11,8 +11,8 @@
     - name: 'Get /home acl'
       ansible.posix.acl:
         path: '/home'
-      register: '__home'
+      register: '__acl'
 
     - name: 'Print command output'
       ansible.builtin.debug:
-        msg: '{{ __home.stdout }}'
+        var: '__acl'
