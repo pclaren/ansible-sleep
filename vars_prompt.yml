@@ -1,0 +1,15 @@
+---
+
+- name: 'Vars prompt'
+  hosts: 'all'
+  become: false
+  gather_facts: true
+  vars_prompt:
+    - name: 'myvar'
+      prompt: 'What is your name?'
+      private: false
+
+  tasks:
+    - name: 'Print myvar'
+      ansible.builtin.debug:
+        var: 'myvar'
