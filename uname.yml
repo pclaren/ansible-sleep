@@ -4,6 +4,9 @@
   hosts: 'all'
   become: false
   gather_facts: true
+  collections:
+    - 'community.general'
+    - 'ansible.posix'
 
   tasks:
     - name: 'Run uname'
