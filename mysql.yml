@@ -8,7 +8,7 @@
     - 'community.mysql'
 
   tasks:
-    - name: 'Get /home mysql'
+    - name: 'Get mysql information'
       community.mysql.mysql_info:
         login_user: 'root'
         login_unix_socket: '/run/mysqld/mysqld.sock'
