@@ -1,0 +1,19 @@
+---
+
+- name: 'mysql'
+  hosts: 'all'
+  become: false
+  gather_facts: true
+  collections:
+    - 'community.mysql'
+
+  tasks:
+    - name: 'Get /home mysql'
+      community.mysql.mysql_info:
+        login_user: 'root'
+        login_unix_socket: '/run/mysqld/mysqld.sock'
+      register: '__mysql'
+
+    - name: 'Print command output'
+      ansible.builtin.debug:
+        var: '__mysql'
