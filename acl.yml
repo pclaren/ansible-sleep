@@ -1,0 +1,18 @@
+---
+
+- name: 'acl'
+  hosts: 'all'
+  become: false
+  gather_facts: true
+  collections:
+    - 'ansible.posix'
+
+  tasks:
+    - name: 'Get /home acl'
+      ansible.posix.acl:
+        path: '/home'
+      register: '__home'
+
+    - name: 'Print command output'
+      ansible.builtin.debug:
+        msg: '{{ __home.stdout }}'
